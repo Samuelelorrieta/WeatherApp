@@ -24,6 +24,8 @@
         public string interval { get; set; }
         public string temperature_2m { get; set; }
         public string relativehumidity_2m { get; set; }
+        public string is_day { get; set; }
+        public string windspeed_10m { get; set; }
     }
 
     public class Current
@@ -32,6 +34,8 @@
         public int interval { get; set; }
         public float temperature_2m { get; set; }
         public int relativehumidity_2m { get; set; }
+        public int is_day { get; set; }
+        public float windspeed_10m { get; set; }
     }
 
     public class Hourly_Units
@@ -52,6 +56,7 @@
         public string weathercode { get; set; }
         public string temperature_2m_max { get; set; }
         public string temperature_2m_min { get; set; }
+        public string uv_index_max { get; set; }
     }
 
     public class Daily
@@ -60,6 +65,7 @@
         public int[] weathercode { get; set; }
         public float[] temperature_2m_max { get; set; }
         public float[] temperature_2m_min { get; set; }
+        public float[] uv_index_max { get; set; }
     }
 
 }

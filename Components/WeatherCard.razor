@@ -4,6 +4,7 @@
         <div class="card-body">
             <h5> @tempMin ºC / @tempMax ºC</h5>
             <p class="card-text">@description</p>
+            <p>@uv</p>
         </div>
     </div>
 </div>
@@ -17,4 +18,6 @@
     public float tempMax { get; set; }
     [Parameter]
     public string description { get; set; }
+    [Parameter]
+    public float uv { get; set; }
 }

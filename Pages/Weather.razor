@@ -4,6 +4,7 @@
 @using WeatherApp.Models;
 @using WeatherApp.Utilities;
 @inject HttpClient Client;
+<div style="background-color:blue;">
 <h3>Weather App</h3>
 <div class="input-group mb-3 mt-3">
     <input class="form-control" type="text" @bind=city placeholder="City name" />
@@ -18,16 +19,33 @@
         <p class="display-5">@city</p>
         <p class="display-1">@weatherData.current.temperature_2m ºC</p>
         <p class="display-6">@Weathercode.Convert(@weatherData.daily.weathercode[0])</p>
+        <p class="display-3">Humidity: @weatherData.current.relativehumidity_2m %</p>
+        @if (weatherData.current.is_day==0)
+        {
+            <p class="display-5">Es de noche</p>
+        }
+        else
+        {
+            <p class="display-5">Es de día</p>
+        }
+        <p class="display-3">Wind speed: @weatherData.current.windspeed_10m Km/h</p>
     </div>
 
     <div class="card-group">
         @for (int i = 0; i < weatherData.daily.time.Length; i++)
         {
-            <WeatherApp.Components.WeatherCard Day="@weatherData.daily.time[i]" tempMin="@weatherData.daily.temperature_2m_min[i]" tempMax="@weatherData.daily.temperature_2m_max[i]" description="@Weathercode.Convert(@weatherData.daily.weathercode[i])"></WeatherApp.Components.WeatherCard>
+            <WeatherApp.Components.WeatherCard 
+                Day="@weatherData.daily.time[i]" 
+                tempMin="@weatherData.daily.temperature_2m_min[i]" 
+                tempMax="@weatherData.daily.temperature_2m_max[i]" 
+                description="@Weathercode.Convert(@weatherData.daily.weathercode[i])"
+                uv="@weatherData.daily.uv_index_max[i]">
+            </WeatherApp.Components.WeatherCard>
         }
 
     </div>
 }
+</div>
 
 
 @code {
